@@ -177,9 +177,9 @@
                             <!-- 드롭박스 -->
                             <div class="condition-dropbox" style="display: none;">
                                 <ul>
-                                    <li><a href="#">상품수정</a></li>
+                                    <li><a th:href="@{'/post/edit/'+${post.post_num}}">상품수정</a></li>
                                     <li><a href="#">상태변경</a></li>
-                                    <li><a th:href="@{'/post/delete/'+${post.post_num}}">상품삭제</a></li>
+                                    <li><a th:href="@{'/post/delete/'+${post.post_num}}" onclick="return confirm('정말 삭제하시겠습니까?')">상품삭제</a></li>
                                 </ul>
                             </div>
                             <!--dot svg -->
@@ -204,12 +204,11 @@
                         <a class="page-link" th:href="${saleList.first} ? '#' : @{/myPage(page=${saleList.number})}">Prev</a>
                     </li>
                     <span th:each="page: ${#numbers.sequence(startPage, endPage)}">
-<!--
-                <li class="page-item"><span class="page-link active" th:if="${page == searchList.number + 1}" th:text="${page}"></span></li>
--->
+
                 <li class="page-item page-link active" th:if="${page == saleList.number + 1}" th:text="${page}"></li>
-                <li class="page-item" th:unless="${page == saleList.number + 1}"><a class="page-link" th:href="@{/myPage(page=${page})}" th:text="${page}"></a></li>
-                        <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
+                <li class="page-item" th:unless="${page == saleList.number + 1}"><a class="page-link"
+                                                                                    th:href="@{/myPage(page=${page})}"
+                                                                                    th:text="${page}"></a></li>
             </span>
                     <li class="page-item">
                         <a class="page-link" th:href="${saleList.last} ? '#' : @{/myPage(page=${saleList.number + 2})}">Next</a>
@@ -280,6 +279,68 @@
         });
     });
 
+    function applyScriptToElement(element) {
+        const dropboxItems = element.querySelectorAll('.condition-dropbox ul li');
+
+        dropboxItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                const href = item.querySelector('a').getAttribute('href');
+                if (href) {
+                    window.location.href = href;
+                }
+            });
+        });
+
+        const dotsSvg = element.querySelector('.svg_wrap svg');
+        const originalSvg = dotsSvg.cloneNode(true);
+        const newSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#ccc" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
+                </svg>`;
+        let isClicked = false;
+        let isDropdownOpen = false;
+
+        dotsSvg.addEventListener('click', function () {
+            if (isClicked) {
+                //드롭박스 기본 컨디션 정의
+                dotsSvg.innerHTML = originalSvg.innerHTML;
+                element.querySelector('.condition-dropbox').style.display = 'none';
+                isDropdownOpen = false;
+            } else {
+                // 다른 카드들의 드롭다운 닫기
+                const allCards = document.querySelectorAll('.card_wrap');
+                allCards.forEach(function (card) {
+                    const svg = card.querySelector('.svg_wrap svg');
+                    const dropdown = card.querySelector('.condition-dropbox');
+                    if (svg !== dotsSvg && dropdown.style.display === 'block') {
+                        svg.innerHTML = originalSvg.innerHTML;
+                        dropdown.style.display = 'none';
+                    }
+                });
+
+                // 현재 카드의 드롭다운 열기
+                dotsSvg.innerHTML = newSvg;
+                element.querySelector('.condition-dropbox').style.display = 'block';
+                isDropdownOpen = true;
+            }
+            isClicked = !isClicked;
+        });
+        // 다른 곳을 클릭했을 때 드롭다운 닫기
+        document.addEventListener('click', function (event) {
+            if (isDropdownOpen && !element.contains(event.target)) {
+                dotsSvg.innerHTML = originalSvg.innerHTML;
+                element.querySelector('.condition-dropbox').style.display = 'none';
+                isDropdownOpen = false;
+                isClicked = false;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const elements = document.querySelectorAll('.card_wrap');
+        elements.forEach(function (element) {
+            applyScriptToElement(element);
+        });
+    });
 </script>
 
 

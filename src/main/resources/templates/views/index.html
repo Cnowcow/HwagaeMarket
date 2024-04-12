@@ -38,7 +38,9 @@
                     <img src="https://media.bunjang.co.kr/images/nocrop/1103485261_w1197.jpg" width="1400" height="300"
                          class="sc-eMigcr fVUxsR" alt="">
                 </div>
-            </div>
+            </div><br>
+
+            <span style="font-size: 2rem; font-weight: bold">실시간 인기상품</span><br>
 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide"
                     data-bs-slide="prev">
@@ -63,7 +65,7 @@
                         <div class="swiperimgbox" th:if="${not #lists.isEmpty(post.file_url)}" style="height:370px;">
                             <img th:src="@{|/upload/${post.file_url[0]}|}" width="250px;" height="250px;" alt="">
                             <div style="width: 250px; display: flex">
-                                <div class="post_title" style="width:250px; display: flex">
+                                <div class="post_title" style="width:190px; display: flex">
                                     <p th:text="${post.post_title}"
                                        style="text-overflow: ellipsis;  white-space: nowrap; overflow: hidden;"></p>
                                 </div>

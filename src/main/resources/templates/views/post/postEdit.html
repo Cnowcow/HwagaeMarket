@@ -21,158 +21,151 @@
             <!-- 사진 들어갈곳 -->
             <div style="display: flex; padding: 0 40px 20px 40px;">
                 <div style="padding: 15px;">
-                    <label for="post_upLoadFile" class="btn btn-outline-dark" style="width: 80px; height: 80px;"><i class="bi bi-camera" style="font-size: 30px;"></i><p style="font-size: 12px;">최대 5장</p></label>
-                    <input type="file" accept="image/jpeg, image/png" name="post_upLoadFile" id="post_upLoadFile" style="display: none;" multiple onchange="file(event)">
+                    <label for="post_upLoadFile" class="btn btn-outline-dark" style="width: 80px; height: 80px;"><i
+                            class="bi bi-camera" style="font-size: 30px;"></i>
+                        <p style="font-size: 12px;">최대 5장</p></label>
+                    <input type="file" accept="image/jpeg, image/png" name="post_upLoadFile" id="post_upLoadFile"
+                           style="display: none;" multiple onchange="file(event)" required>
                 </div>
-                <div style="display: flex; justify-content: flex-start" id="uploadedImages" >
+                <div style="display: flex; justify-content: flex-start" id="uploadedImages">
                     <div th:each="fileName: ${edit.file_url}">
                         <!-- 파일 이름이 여러개라 반복문 돌려서 storedFileName에 하나씩 접근할 수 있는 변수 -->
-                        <img th:src="@{|/upload/${fileName}|}" alt=""
-                             style="width: 80px; height: 80px; margin: 15px; box-shadow: 0px 0px 8px -1px; border-radius: 8px; cursor: pointer">
+                        <div>
+                            <img th:src="@{|/upload/${fileName}|}" alt=""
+                                 style="width: 80px; height: 80px; margin: 15px; box-shadow: 0px 0px 8px -1px; border-radius: 8px;">
+                        </div>
                     </div>
                 </div>
-            </div><br>
+            </div>
+            <br><br>
 
-                <!--            <div style="display: flex; padding: 0 40px 20px 40px;">
-                                <div style="padding: 15px;">
-                                    <label for="post_upLoadFile" class="btn btn-outline-dark" style="width: 80px; height: 80px;"><i
-                                            class="bi bi-camera" style="font-size: 30px;"></i>
-                                        <p style="font-size: 12px;">최대 5장</p></label>
-                                    <input type="file" accept="image/jpeg, image/png" name="post_upLoadFile" id="post_upLoadFile"
-                                           style="display: none;" multiple onchange="file(event)">
-                                </div>
-                                <div style="width: 700px; display: flex; justify-content: flex-start" id="uploadedImages">
-                                    &lt;!&ndash;                        <img th:id="'thumbnail_' + ${index}"  th:each="index : ${#numbers.sequence(0, edit.file_url.size() - 1)}" th:src="@{|/upload/${edit.file_url[__${index}__]}|}"
-                                                                 style="width: 80px; height: 80px; margin: 15px; box-shadow: 0px 0px 8px -1px;
-                                                              border-radius: 8px; cursor: pointer">&ndash;&gt;
-                                </div>-->
-                <!--<hr>
-                                <div style="width: 700px; display: flex; justify-content: flex-start" id="uploadedImages" th:each="fileName: ${edit.file_url}" >
-                                        <div th:each="index : ${#numbers.sequence(0, edit.file_url.size() - 1)}">
-                                            <img th:id="'thumbnail_' + ${index}" th:src="@{|/upload/${fileName}|}"
-                                             style="width: 80px; height: 80px; margin: 15px; box-shadow: 0px 0px 8px -1px;
-                                              border-radius: 8px; cursor: pointer">
-                                        </div>
-                                </div>-->
+            <div>
+                <input id="postTitle" name="post_title" th:value="${edit.post_title}" class="form-control" required
+                       minlength="4" maxlength="50" style="width: 768px;">
+            </div>
+            <br><br>
 
-                <div>
-                    <input id="postTitle" name="post_title" th:value="${edit.post_title}" class="form-control" required
-                           minlength="4" maxlength="50" style="width: 768px;">
-                </div><br><br>
+            <div>
+                <select class="form-select" name="category_num" aria-label="Default select example"
+                        th:value="${edit.category_num}">
+                    <option value="1" th:selected="${edit.category_num == 1}">여성의류</option>
+                    <option value="2" th:selected="${edit.category_num == 2}">남성의류</option>
+                    <option value="3" th:selected="${edit.category_num == 3}">신발</option>
+                    <option value="4" th:selected="${edit.category_num == 4}">가방/지갑</option>
+                    <option value="5" th:selected="${edit.category_num == 5}">시계</option>
+                    <option value="6" th:selected="${edit.category_num == 6}">쥬얼리</option>
+                    <option value="7" th:selected="${edit.category_num == 7}">패션 액세서리</option>
+                    <option value="8" th:selected="${edit.category_num == 8}">디지털</option>
+                    <option value="9" th:selected="${edit.category_num == 9}">가전제품</option>
+                    <option value="10" th:selected="${edit.category_num == 10}">스포츠/레저</option>
+                    <option value="11" th:selected="${edit.category_num == 11}">차량/오토바이</option>
+                    <option value="12" th:selected="${edit.category_num == 12}">스타굿즈</option>
+                    <option value="13" th:selected="${edit.category_num == 13}">키덜트</option>
+                    <option value="14" th:selected="${edit.category_num == 14}">예술/희귀/수집품</option>
+                    <option value="15" th:selected="${edit.category_num == 15}">음반/악기</option>
+                    <option value="16" th:selected="${edit.category_num == 16}">도서/티켓/문구</option>
+                    <option value="17" th:selected="${edit.category_num == 17}">뷰티/미용</option>
+                    <option value="18" th:selected="${edit.category_num == 18}">가구/인테리어</option>
+                    <option value="19" th:selected="${edit.category_num == 19}">생활/주방용품</option>
+                    <option value="20" th:selected="${edit.category_num == 20}">공구/산업용품</option>
+                    <option value="21" th:selected="${edit.category_num == 21}">식품</option>
+                    <option value="22" th:selected="${edit.category_num == 22}">유아동/출산</option>
+                    <option value="23" th:selected="${edit.category_num == 23}">반려동물용품</option>
+                    <option value="24" th:selected="${edit.category_num == 24}">기타</option>
+                </select>
+            </div>
+            <br><br>
 
-                <div>
-                    <select class="form-select" name="category_num" aria-label="Default select example"
-                            th:value="${edit.category_num}">
-                        <option value="1" th:selected="${edit.category_num == 1}">여성의류</option>
-                        <option value="2" th:selected="${edit.category_num == 2}">남성의류</option>
-                        <option value="3" th:selected="${edit.category_num == 3}">신발</option>
-                        <option value="4" th:selected="${edit.category_num == 4}">가방/지갑</option>
-                        <option value="5" th:selected="${edit.category_num == 5}">시계</option>
-                        <option value="6" th:selected="${edit.category_num == 6}">쥬얼리</option>
-                        <option value="7" th:selected="${edit.category_num == 7}">패션 액세서리</option>
-                        <option value="8" th:selected="${edit.category_num == 8}">디지털</option>
-                        <option value="9" th:selected="${edit.category_num == 9}">가전제품</option>
-                        <option value="10" th:selected="${edit.category_num == 10}">스포츠/레저</option>
-                        <option value="11" th:selected="${edit.category_num == 11}">차량/오토바이</option>
-                        <option value="12" th:selected="${edit.category_num == 12}">스타굿즈</option>
-                        <option value="13" th:selected="${edit.category_num == 13}">키덜트</option>
-                        <option value="14" th:selected="${edit.category_num == 14}">예술/희귀/수집품</option>
-                        <option value="15" th:selected="${edit.category_num == 15}">음반/악기</option>
-                        <option value="16" th:selected="${edit.category_num == 16}">도서/티켓/문구</option>
-                        <option value="17" th:selected="${edit.category_num == 17}">뷰티/미용</option>
-                        <option value="18" th:selected="${edit.category_num == 18}">가구/인테리어</option>
-                        <option value="19" th:selected="${edit.category_num == 19}">생활/주방용품</option>
-                        <option value="20" th:selected="${edit.category_num == 20}">공구/산업용품</option>
-                        <option value="21" th:selected="${edit.category_num == 21}">식품</option>
-                        <option value="22" th:selected="${edit.category_num == 22}">유아동/출산</option>
-                        <option value="23" th:selected="${edit.category_num == 23}">반려동물용품</option>
-                        <option value="24" th:selected="${edit.category_num == 24}">기타</option>
-                    </select>
-                </div><br><br>
-
-                <!-- 글내용 -->
-                <div>
+            <!-- 글내용 -->
+            <div>
                 <textarea id="post_content" name="post_content" class="form-control"
                           placeholder="- 상품명(브랜드)&#10;- 구매 시기&#10;- 사용 기간&#10;- 하자 여부&#10;* 실제 촬영한 사진과 함께 상세 정보를 입력해주세요.&#10;* 카카오톡 아이디 첨부 시 게시물 삭제 및 이용제재 처리될 수 있어요.&#10;안전하고 건전한 거래환경을 위해 과학기술정보통신부, 한국인터넷진흥원, 중고나라가 함께합니다."
                           style="width: 768px; height: 200px;" maxlength="1000"
-                          th:text="${edit.post_content}"></textarea>
-                </div><br><br>
-
-                <!--가격 -->
-                <div>
-                    <input id="post_price" name="post_price" class="form-control" placeholder="💲판매가격(숫자만 입력하세요)"
-                           th:value="${edit.post_price}"
-                           onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">
-                </div><br><br>
-
-                <div>
-                    <p style="font-size: 20px;">판매상태</p>
-                        <select class="form-select" name="post_saleState" aria-label="Default select example">
-                            <option th:selected="${edit.post_saleState == '판매중'}">판매중</option>
-                            <option th:selected="${edit.post_saleState == '예약중'}">예약중</option>
-                            <option th:selected="${edit.post_saleState == '판매완료'}">판매완료</option>
-                        </select>
-                    </p>
-                </div><br><br>
-
-                <div>
-                    <p style="font-size: 20px;">상품상태</p>
-                    <input type="radio" class="btn-check" name="post_productState" id="used" autocomplete="off"
-                           value="중고"
-                           th:checked="${edit.post_productState == '중고'}">
-                    <label class="btn btn-outline-success" for="used">중고</label>
-
-                    <input type="radio" class="btn-check" name="post_productState" id="new" autocomplete="off"
-                           value="새상품"
-                           th:checked="${edit.post_productState == '새상품'}">
-                    <label class="btn btn-outline-success" for="new">새상품</label>
-                </div><br><br>
-
-                <div>
-                    <p style="font-size: 20px;">거래방법</p>
-                    <input type="radio" class="btn-check" name="post_way" id="direct" autocomplete="off" value="직거래"
-                           th:checked="${edit.post_way == '직거래'}">
-                    <label class="btn btn-outline-success" for="direct">직거래</label>
-
-                    <input type="radio" class="btn-check" name="post_way" id="post" autocomplete="off" value="택배"
-                           th:checked="${edit.post_way == '택배'}">
-                    <label class="btn btn-outline-success" for="post">택배</label>
-
-                    <input type="radio" class="btn-check" name="post_way" id="both" autocomplete="off" value="직거래, 택배"
-                           th:checked="${edit.post_way == '직거래, 택배'}">
-                    <label class="btn btn-outline-success" for="both">직거래, 택배</label>
-                </div><br><br>
-
-                <div style="width: 768px;">
-                    <p style="font-size: 20px;">거래장소</p>
-                    <input class="form-control" id="location2" name="post_location2" th:value="${edit.post_location2}"
-                           onclick="openZipSearch()">
-                </div>
-                <br><br>
-                <div id="map" style="width: 764px; height: 500px; border-radius: 15px;"><br><br>
-                </div><br><br>
-
-                <div class="d-none">
-                    <input name="post_num" th:value="${edit.post_num}">
-                    <input name="post_location" id="location" th:value="${edit.post_location}">
-                    <input name="post_regdate" th:value="${edit.post_regdate}">
-                    <input name="post_update" id="post_update" th:value="${edit.post_update}">
-                    <input name="post_hits" th:value="${edit.post_hits}">
-                    <input name="user_num" id="user_num" th:value="${session.user.user_num}">
-                </div>
-
-                <div>
-                    <div style="display: flex; justify-content: center; float: left">
-                        <button type="submit" class="btn btn-outline-primary" id="joinButton">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a class="btn btn-outline-secondary" href="#" onclick="confirmed()">취소</a>
-                    </div>
-                    <div style="float: right">
-                        <a class="btn btn-outline-danger" style="float: left"
-                           th:href="@{'/post/delete/'+${edit.post_num}}"
-                           onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
-                    </div>
-                </div><br><br>
+                          th:utext="${edit.post_content}"></textarea>
             </div>
+            <br><br>
+
+            <!--가격 -->
+            <div>
+                <input id="post_price" name="post_price" class="form-control" placeholder="💲판매가격(숫자만 입력하세요)"
+                       th:value="${edit.post_price}"
+                       onKeyup="this.value=this.value.replace(/[^0-9]/g,'')">
+            </div>
+            <br><br>
+
+            <div>
+                <p style="font-size: 20px;">판매상태</p>
+                <select class="form-select" name="post_saleState" aria-label="Default select example">
+                    <option th:selected="${edit.post_saleState == '판매중'}">판매중</option>
+                    <option th:selected="${edit.post_saleState == '예약중'}">예약중</option>
+                    <option th:selected="${edit.post_saleState == '판매완료'}">판매완료</option>
+                </select>
+                </p>
+            </div>
+            <br><br>
+
+            <div>
+                <p style="font-size: 20px;">상품상태</p>
+                <input type="radio" class="btn-check" name="post_productState" id="used" autocomplete="off"
+                       value="중고"
+                       th:checked="${edit.post_productState == '중고'}">
+                <label class="btn btn-outline-success" for="used">중고</label>
+
+                <input type="radio" class="btn-check" name="post_productState" id="new" autocomplete="off"
+                       value="새상품"
+                       th:checked="${edit.post_productState == '새상품'}">
+                <label class="btn btn-outline-success" for="new">새상품</label>
+            </div>
+            <br><br>
+
+            <div>
+                <p style="font-size: 20px;">거래방법</p>
+                <input type="radio" class="btn-check" name="post_way" id="direct" autocomplete="off" value="직거래"
+                       th:checked="${edit.post_way == '직거래'}">
+                <label class="btn btn-outline-success" for="direct">직거래</label>
+
+                <input type="radio" class="btn-check" name="post_way" id="post" autocomplete="off" value="택배"
+                       th:checked="${edit.post_way == '택배'}">
+                <label class="btn btn-outline-success" for="post">택배</label>
+
+                <input type="radio" class="btn-check" name="post_way" id="both" autocomplete="off" value="직거래, 택배"
+                       th:checked="${edit.post_way == '직거래, 택배'}">
+                <label class="btn btn-outline-success" for="both">직거래, 택배</label>
+            </div>
+            <br><br>
+
+            <div style="width: 768px;">
+                <p style="font-size: 20px;">거래장소</p>
+                <input class="form-control" id="location2" name="post_location2" th:value="${edit.post_location2}"
+                       onclick="openZipSearch()">
+            </div>
+            <br><br>
+            <div id="map" style="width: 764px; height: 500px; border-radius: 15px;"><br><br>
+            </div>
+            <br><br>
+
+            <div class="d-none">
+                <input id="postNum" name="post_num" th:value="${edit.post_num}">
+                <input name="post_location" id="location" th:value="${edit.post_location}">
+                <input name="post_regdate" th:value="${edit.post_regdate}">
+                <input name="post_update" id="post_update" th:value="${edit.post_update}">
+                <input name="post_hits" th:value="${edit.post_hits}">
+                <input name="user_num" id="user_num" th:value="${session.user.user_num}">
+            </div>
+
+            <div>
+                <div style="display: flex; justify-content: center; float: left">
+                    <button type="submit" class="btn btn-outline-primary" id="joinButton" onclick="validateForm()">수정하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-outline-secondary" onclick="cancel()">취소</button>
+                </div>
+                <div style="float: right">
+                    <a class="btn btn-outline-danger" style="float: left"
+                       th:href="@{'/post/delete/'+${edit.post_num}}"
+                       onclick="return confirm('정말 삭제하시겠습니까?')">삭제하기</a>
+                </div>
+            </div>
+            <br><br>
+        </div>
     </form>
 
 
@@ -182,6 +175,28 @@
 
 
 <script>
+
+    function cancel() {
+        var postNum = document.getElementById('postNum').value;
+        window.location.href = '/post/' + postNum;
+    }
+
+    function validateForm() {
+        var fileInput = document.getElementById('post_upLoadFile');
+        if (fileInput.files.length === 0) {
+            alert('사진을 한 장 이상 첨부해주세요');
+            return false; // 폼 제출을 막음
+        }
+        return true; // 폼 제출을 허용
+    }
+
+    function convertNewlineToBr() {
+        var postContent = document.getElementById("post_content").value; // 텍스트 에어리어에서 입력된 내용 가져오기
+        var convertedContent = postContent.replace(/\n/g, "<br>"); // \n을 <br>로 변환하기
+
+        document.getElementById("post_content").value = convertedContent; // 변환된 내용을 다시 텍스트 에어리어에 설정하기
+    }
+
     function updateDate() {
         var now = new Date();
         var year = now.getFullYear();
@@ -191,51 +206,51 @@
         var minutes = String(now.getMinutes()).padStart(2, '0');
         var seconds = String(now.getSeconds()).padStart(2, '0');
         // return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
-
+        convertNewlineToBr();
         document.getElementById("post_update").value = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
     }
 
 
-        // 최대 업로드 파일 수
-        const maxFiles = 5;
+    // 최대 업로드 파일 수
+    const maxFiles = 5;
 
-        function file(event) {
-            const files = event.target.files; // 선택된 파일 가져오기
-            const uploadedImagesDiv = document.getElementById("uploadedImages");
+    function file(event) {
+        const files = event.target.files; // 선택된 파일 가져오기
+        const uploadedImagesDiv = document.getElementById("uploadedImages");
+        document.getElementById("uploadedImages").innerHTML = "";
 
-            // 업로드된 파일을 화면에 표시
+        // 업로드된 파일을 화면에 표시
+        if (files.length > maxFiles) {
+            alert(`최대 ${maxFiles}개까지 업로드할 수 있습니다.`);
+            event.target.value = ""; // 파일 선택 취소
+        } else if (files.length > 0) {
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                console.log(`File ${i + 1}:`);
+                console.log("File name:", file.name); // 파일 이름 출력
+                console.log("File size:", file.size, "bytes"); // 파일 크기 출력
+                console.log("File type:", file.type); // 파일 유형 출력
 
-            if (files.length > maxFiles) {
-                alert(`최대 ${maxFiles}개까지 업로드할 수 있습니다.`);
-                event.target.value = ""; // 파일 선택 취소
-            } else if (files.length > 0) {
-                for (let i = 0; i < files.length; i++) {
-                    const file = files[i];
-                    console.log(`File ${i + 1}:`);
-                    console.log("File name:", file.name); // 파일 이름 출력
-                    console.log("File size:", file.size, "bytes"); // 파일 크기 출력
-                    console.log("File type:", file.type); // 파일 유형 출력
-
-                    // 이미지 엘리먼트 생성
-                    const img = document.createElement("img");
-                    img.src = URL.createObjectURL(file);
-                    img.style.width = "80px"; // 이미지 너비 조절
-                    img.style.height = "80px"; // 이미지 너비 조절
-                    img.style.margin = "15px"; // 이미지 간격 조절
-                    img.style.boxShadow = "0px 0px 8px -1px"; // 이미지 간격 조절
-                    img.style.borderRadius = "8px;";
+                // 이미지 엘리먼트 생성
+                const img = document.createElement("img");
+                img.src = URL.createObjectURL(file);
+                img.style.width = "80px"; // 이미지 너비 조절
+                img.style.height = "80px"; // 이미지 너비 조절
+                img.style.margin = "15px"; // 이미지 간격 조절
+                img.style.boxShadow = "0px 0px 8px -1px"; // 이미지 간격 조절
+                img.style.borderRadius = "8px;";
 
 
-                    // 이미지를 업로드된 이미지들을 표시하는 div에 추가
-                    uploadedImagesDiv.appendChild(img);
-                }
-            } else {
-                console.log("No file selected");
+                // 이미지를 업로드된 이미지들을 표시하는 div에 추가
+                uploadedImagesDiv.appendChild(img);
             }
+        } else {
+            console.log("No file selected");
         }
-</script>
+    }
 
-<script>
+
+
     // 페이지 로드 시 initMap 함수 실행
     window.onload = function () {
         initializeMap();
@@ -289,8 +304,6 @@
     }
 
 
-</script>
-<script>
     function openZipSearch() {
         new daum.Postcode({
             oncomplete: function (data) {

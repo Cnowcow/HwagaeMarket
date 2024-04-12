@@ -1,7 +1,13 @@
 package com.hwagae.market.user;
 
 import com.hwagae.market.email.EmailController;
+import com.hwagae.market.event.EventDTO;
+import com.hwagae.market.event.EventService;
+import com.hwagae.market.inquiry.InquiryDTO;
+import com.hwagae.market.inquiry.InquiryService;
 import com.hwagae.market.like.LikeService;
+import com.hwagae.market.notice.NoticeDTO;
+import com.hwagae.market.notice.NoticeService;
 import com.hwagae.market.post.PostDTO;
 import com.hwagae.market.post.PostService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.File;
@@ -30,6 +37,9 @@ public class UserController {
     private final EmailController emailController;
     private final PostService postService;
     private final LikeService likeService;
+    private final EventService eventService;
+    private final NoticeService noticeService;
+    private final InquiryService inquiryService;
 
     @GetMapping("/user/join")
     public String joinForm(){
@@ -38,7 +48,23 @@ public class UserController {
     }
 
     @PostMapping("/user/join")
-    public String join(@ModelAttribute UserDTO userDTO){
+    public String join(@ModelAttribute UserDTO userDTO, RedirectAttributes redirectAttributes){
+
+        // ID 중복 체크
+        String idCheckResult = userService.idCheck(userDTO.getUser_id());
+        if("duplicated".equals(idCheckResult)){
+            redirectAttributes.addAttribute("idError", true);
+            return "redirect:/user/join";
+        }
+
+        // 닉네임 중복 체크
+        String nickCheckResult = userService.nickCheck(userDTO.getUser_nick());
+        if("duplicated".equals(nickCheckResult)){
+            redirectAttributes.addAttribute("nickError", true);
+            return "redirect:/user/join";
+        }
+
+
         if ("ok".equals(emailController.getEmailAuthResult())) {
             System.out.println("후에엥"+emailController.getEmailAuthResult());
             System.out.println("UserController.save");
@@ -78,6 +104,15 @@ public class UserController {
         List<PostDTO> postDTOList = postService.findAll();
         model.addAttribute("postList", postDTOList);
 
+        List<EventDTO> eventDTOList = eventService.findAll();
+        model.addAttribute("eventList", eventDTOList);
+
+        List<NoticeDTO> noticeDTOList = noticeService.findAll();
+        model.addAttribute("noticeList", noticeDTOList);
+
+        List<InquiryDTO> inquiryDTOList = inquiryService.findAll();
+        model.addAttribute("inquiryList", inquiryDTOList);
+
         UserDTO result = userService.login(userDTO);
         if(result != null){
             session.setAttribute("user", result);
@@ -85,7 +120,7 @@ public class UserController {
                 return  "redirect:/admin/adminMenu";
             }
             System.out.println("로그인 성공");
-            return "/views/user/index";
+            return "/views/index";
         }else{
             return "redirect:/user/login?loginFailed=true";
         }
