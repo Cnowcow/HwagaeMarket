@@ -1,31 +1,31 @@
 # 화개장터
 
 >## 기능
-  ###### 1. 사용자 CRUD
-  ###### 2. 물건 등록
-  ###### 3. 물건 검색
-  ###### 4. 유저간 채팅
+  ##### 1. 사용자 CRUD
+  ##### 2. 물건 등록
+  ##### 3. 물건 검색
+  ##### 4. 유저간 채팅
 
 >## 기술 Stack
-  ###### 1. Java 11
-  ###### 2. HTML 5
-  ###### 3. JavaScript
-  ###### 4. jQuery
-  ###### 5. Ajax
-  ###### 6. Css 3
-  ###### 7. SpringBoot
-  ###### 8. JPA
-  ###### 9. MySql DB
-  ###### 10. GitHub
-  ###### 11. Gradle
-  ###### 12. InteliJ
-  ###### 13. Visual Studio
-  ###### 14. BootStrap
+  ##### 1. Java 11
+  ##### 2. HTML 5
+  ##### 3. JavaScript
+  ##### 4. jQuery
+  ##### 5. Ajax
+  ##### 6. Css 3
+  ##### 7. SpringBoot
+  ##### 8. JPA
+  ##### 9. MySql DB
+  ##### 10. GitHub
+  ##### 11. Gradle
+  ##### 12. InteliJ
+  ##### 13. Visual Studio
+  ##### 14. BootStrap
 
 
 
 
-
+>
 ![gif 메인페이지에서 로그인까지](https://github.com/Cnowcow/HwagaeMarket/assets/147683241/d1bbfab4-a0c5-4ecf-9463-f308b6870fef)
 
 메인페이지, 로그인 페이지(ID, PW 일치, 불일치 관련 예외처리)
