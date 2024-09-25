@@ -1,5 +1,12 @@
 # 화개장터
 
+## ✏ 프로젝트 개요
+  - '중고나라'와 '번개장터'를 모티브로한 중고거래 홈페이지.
+  - 프론트엔드 부분은 중고나라 홈페이지를 클론코딩 함으로써 백엔드에 집중하고 REST API를 적용해 CRUD 및 홈페이지 내의 기능들을 구현.
+
+![홈페이지](https://github.com/user-attachments/assets/f2c943f0-fc0e-4151-bda7-d9ee6db78386)
+<hr><br>
+
 ## ✨기술스택✨
 
 |<img src="https://github.com/user-attachments/assets/e37eb89d-abd8-4b73-913a-970ef8ac2db4">|<img src="https://github.com/user-attachments/assets/0ca1da0e-40a4-463f-8c5f-c4eb59a6d1ef">|<img src="https://github.com/user-attachments/assets/2c166b50-46c8-4ae3-a911-16f7c952f7a1">|<img src="https://github.com/user-attachments/assets/656335a5-c1ac-4c03-b776-c79ad84ea36b">|<img src="https://github.com/user-attachments/assets/cd84b695-c17d-4b28-b031-0f30827ca785">|<img src="https://github.com/user-attachments/assets/04750eda-60a5-4b85-9fba-1870789c0677">
@@ -11,13 +18,6 @@
 |JavaScript|HTML5|CSS3|Thymeleaf|
 <br>
 <hr>
-
-![홈페이지](https://github.com/user-attachments/assets/f2c943f0-fc0e-4151-bda7-d9ee6db78386)
-
-## ✏ 프로젝트 개요
-  - '중고나라'와 '번개장터'를 모티브로한 중고거래 홈페이지.
-  - 프론트엔드 부분은 중고나라 홈페이지를 클론코딩 함으로써 백엔드에 집중하고 REST API를 적용해 CRUD 및 홈페이지 내의 기능들을 구현.
-
 
 ## ✅ 맡은 역할
   - ### 메인페이지 구성 및 Front-end
