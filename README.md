@@ -1,5 +1,19 @@
 # 화개장터
 
+## ✨기술스택✨
+
+|<img src="https://github.com/user-attachments/assets/e37eb89d-abd8-4b73-913a-970ef8ac2db4">|<img src="https://github.com/user-attachments/assets/0ca1da0e-40a4-463f-8c5f-c4eb59a6d1ef">|<img src="https://github.com/user-attachments/assets/2c166b50-46c8-4ae3-a911-16f7c952f7a1">|<img src="https://github.com/user-attachments/assets/656335a5-c1ac-4c03-b776-c79ad84ea36b">|<img src="https://github.com/user-attachments/assets/cd84b695-c17d-4b28-b031-0f30827ca785">|<img src="https://github.com/user-attachments/assets/04750eda-60a5-4b85-9fba-1870789c0677">
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|Java|JPA|RESTful API|MySQL|Spring|GitHub|
+
+|<img src="https://github.com/user-attachments/assets/57985638-3de9-45b8-9519-47b6c0f96342">|<img src="https://github.com/user-attachments/assets/ca92d296-cae7-46d6-9aea-c7ee41925eee">|<img src="https://github.com/user-attachments/assets/80a15ed0-7f5f-48c4-ae4e-1e18f717a824">|<img src="https://github.com/user-attachments/assets/30667665-8e8c-4887-9092-7e168e04a717">|
+|:---:|:---:|:---:|:---:|
+|JavaScript|HTML5|CSS3|Thymeleaf|
+<br>
+<hr>
+
+![홈페이지](https://github.com/user-attachments/assets/f2c943f0-fc0e-4151-bda7-d9ee6db78386)
+
 ## ✏ 프로젝트 개요
   - '중고나라'와 '번개장터'를 모티브로한 중고거래 홈페이지.
   - 프론트엔드 부분은 중고나라 홈페이지를 클론코딩 함으로써 백엔드에 집중하고 REST API를 적용해 CRUD 및 홈페이지 내의 기능들을 구현.
@@ -63,28 +77,13 @@
         <hr>
 
 
-  ## 🔎 문제점 및 해결방안
+## 🔎 문제점 및 해결방안
 
-  - ### 실시간 채팅기능에 Web Socket을 사용하지 못한 점.
+- ### 실시간 채팅기능에 Web Socket을 사용하지 못한 점.
     → 여러 기능들을 구현하는 데에 시간 배분을 잘못해서 자료는 많이 찾아보았지만 실제로 적용하는 데에는 어려움이 있었다. 적용하진 못했지만 덕분에 Web Socket에 대해서 공부할 수 있었던 시간.
     
-  - ### 사용자들의 구매내역을 출력하는 기능을 구현하지 못했다.
+- ### 사용자들의 구매내역을 출력하는 기능을 구현하지 못했다.
     → 실시간 채팅과 이어지는 맥락인데, 채팅내용을 토대로 구매자/판매자를 구분하여 구매여부를 결정하는 기능을 넣으려고 했으나 데이터베이스 설계부터 서비스 로직을 구현하는데 어려움이 많았다. 구매내역을 구현한 프로젝트들을 서치 해보고, 적용 가능한지 공부가 필요한 상황.
 
-   
-
-  ## 기술 Stack
-  ##### 1. Java 11
-  ##### 2. HTML 5
-  ##### 3. JavaScript
-  ##### 4. jQuery
-  ##### 5. Ajax
-  ##### 6. Css 3
-  ##### 7. SpringBoot
-  ##### 8. JPA
-  ##### 9. MySql DB
-  ##### 10. GitHub
-  ##### 11. Gradle
-  ##### 12. InteliJ
-  ##### 13. Visual Studio
-  ##### 14. BootStrap
+##  🔍프로젝트 기간
+2024-01-15 ~ 2024-03-20
