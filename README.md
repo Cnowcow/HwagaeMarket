@@ -76,6 +76,9 @@
         <br><img src="https://github.com/user-attachments/assets/2b4827c7-733b-4ed1-96f0-01ca3b334ee7"><br>
         <hr>
 
+  - ### 데이터베이스 서버 구축
+  - ### 배포
+
 
 ## 🔎 문제점 및 해결방안
 
