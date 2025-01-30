@@ -7,6 +7,11 @@
 ![홈페이지](https://github.com/user-attachments/assets/f2c943f0-fc0e-4151-bda7-d9ee6db78386)
 <hr><br>
 
+# 📚 배포 페이지
+### 🤨 [AutumnBrow](http://autumnbrow.hhjnn92.synology.me/)
+<br><br>
+
+
 ## ✨기술스택✨
 
 |<img src="https://github.com/user-attachments/assets/e37eb89d-abd8-4b73-913a-970ef8ac2db4">|<img src="https://github.com/user-attachments/assets/0ca1da0e-40a4-463f-8c5f-c4eb59a6d1ef">|<img src="https://github.com/user-attachments/assets/2c166b50-46c8-4ae3-a911-16f7c952f7a1">|<img src="https://github.com/user-attachments/assets/656335a5-c1ac-4c03-b776-c79ad84ea36b">|<img src="https://github.com/user-attachments/assets/cd84b695-c17d-4b28-b031-0f30827ca785">|<img src="https://github.com/user-attachments/assets/04750eda-60a5-4b85-9fba-1870789c0677">
