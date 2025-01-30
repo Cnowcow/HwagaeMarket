@@ -8,7 +8,7 @@
 <hr><br>
 
 # 📚 배포 페이지
-### 🤨 [AutumnBrow](http://autumnbrow.hhjnn92.synology.me/)
+### 🤨 [HwagaeMarket](http://market.hhjnn92.synology.me/)
 <br><br>
 
 
